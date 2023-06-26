@@ -21,7 +21,7 @@ const List = () => {
     }
 
     const borrarTarea = (index) => {
-        const nuevasTareas = tareas.filter((tarea, i) => i !== index);
+        const nuevasTareas = tareas.filter((tarea, i) => i != index);
         setTareas(nuevasTareas);
       };
 
@@ -33,7 +33,7 @@ const List = () => {
             <form>
                 <div className="mb-3">
                     <input type="text" onChange={handleTarea} className="form-control" id="form2" placeholder="Añadir tarea" value={tarea} />
-                    <ul className="list-group">{tareas.map((item, index) => <li key={index} onClick={() => borrarTarea(index)} className="list-group-item">{item}</li>)}</ul>
+                    <ul className="list-group"> {tareas.map((item, index) => (<li key={index} className="list-group-item d-flex justify-content-between"> {item} <span className="delete-icon" onClick={() => borrarTarea(index)}><b>X</b></span></li>))}</ul>
                 </div>
             </form>
             <button type="button" onClick={añadirTarea} className="btn btn-secondary">New</button>
